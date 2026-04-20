@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Trainees List{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="bi bi-people-fill me-2"></i>Trainees Directory</h2>
+    <a href="{% url 'trainee_add' %}" class="btn btn-primary">
+        <i class="bi bi-person-plus-fill me-1"></i> Add New Trainee
+    </a>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+            <thead class="table-dark">
+                <tr>
+                    <th class="ps-4">ID</th>
+                    <th>Full Name</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for trainee in trainees %}
+                <tr>
+                    <td class="ps-4">#{{ trainee.id }}</td>
+                    <td class="fw-bold">{{ trainee.name }}</td>
+                    <td class="text-center">
+                        <a href="{% url 'trainee_details' trainee.id %}" class="btn btn-sm btn-info text-white">
+                            <i class="bi bi-eye"></i> View
+                        </a>
+                        <a href="{% url 'trainee_update' trainee.id %}" class="btn btn-sm btn-warning">
+                            <i class="bi bi-pencil-square"></i> Edit
+                        </a>
+                        <a href="{% url 'trainee_delete' trainee.id %}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this trainee?')">
+                            <i class="bi bi-trash"></i> Delete
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3" class="text-center py-5 text-muted">
+                        <i class="bi bi-info-circle me-1"></i> No trainees found in the database.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
