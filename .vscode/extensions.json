@@ -1,0 +1,17 @@
+{
+    "recommendations": [
+        // Python Essentials
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.black-formatter",
+        "ms-python.flake8",
+        
+        // Django Support
+        "batisteo.vscode-django",
+        
+        // Web Development Utilities
+        "ritwickdey.liveserver",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+    ]
+}
